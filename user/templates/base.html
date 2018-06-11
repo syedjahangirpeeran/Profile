@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<title>Profile Page</title> 
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
+    <style type="text/css">    	
+		body{background-color:#ECF0F1;}
+		#post{margin-top:40px;margin-bottom:80px;}
+		.title{padding:5px;background-color:#fff;}
+		.title h3 a{color:#34495E;text-decoration:none; transition: 0.5s;}
+		.title h3 a:hover{color:#F39C12; }
+		.footer{background-color:#16A085;padding:10px;position: relative;}
+		.footer span a {
+		    color: #fff;
+		    display: inline-block;
+		    padding: 6px 5px;
+		    text-decoration: none;
+		    transition: 0.5s;
+		}
+		.footer span a:hover{     
+		    color:#F39C12;   
+		}
+		aside{
+		    margin-top: 30px;
+		box-shadow: 1px 4px 16px 3px rgba(199,197,199,1);}
+		aside .footer>img {
+		    width: 33px;
+		    height: 33px;
+		    border-radius: 100%;
+		    margin-right: 10px;
+		    border: 2px solid #fff;
+		}
+    </style>
+</head>
+
+<body>
+    <section id="post" >
+     <div class="container">
+     	<h3>My Posts</h3>
+       <div class="row">
+             
+       	{% block body %}
+		{% endblock %}
+                      
+	 <script>
+         $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip(); 
+         }); 	  
+    	$(document).scroll(function(e){
+		var scrollAmount = $(window).scrollTop();
+		var documentHeight = $(document).height();
+		var scrollPercent = (scrollAmount / documentHeight) * 100;
+
+		if(scrollPercent > 70) {
+			f();
+			alert("Ajax call Made");
+		}
+		});
+		function f() {
+		  $.ajax({
+		  url:"http://127.0.0.1:8000/home/",
+		  type:"POST",
+		  success:function(data){
+		  }
+		  });
+		}
+    </script>
+    </div>
+    </div>
+    </section>
+</body>
+</html>

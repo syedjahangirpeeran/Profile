@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for post in all_post %}
+<div class="col-lg-7 col-md-7">
+  <aside>
+  <div class="title">
+    <div class="text-center"><h3><a href="#">{{post.description}}</a></h3>
+    </div>
+  </div>
+  <img src="{{post.image}}" style="width: 100%" class="img-responsive">
+  
+  <div class="footer">
+    <img src="{{post.url}}">
+    <span style="font-size: 16px;color: #fff;">{{post.user_id}}</span>
+    <span class="pull-right">
+    <a href="#" data-toggle="tooltip" data-placement="left" title="Comments"><i class="fa fa-comments" ></i> 30</a>
+    <a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> {{post.likes}}</a>
+    <a href="#" data-toggle="tooltip" data-placement="right" title="Dislikes"><i class="fa fa-thumbs-down"></i> {{post.dislikes}}</a>                      
+    </span>
+  </div>
+  </aside>
+</div>
+{% endfor %}
+{% endblock %}
